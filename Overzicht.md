@@ -26,6 +26,15 @@ Aannemersportaal voor rioolwerken — opdrachtbeheer, planning en meetstaten.
 |---|---|
 | [[Stack en DB-laag]] | Express + EJS, db-mssql.js wrapper, SQLite mockup vs. SQL Server prod |
 | [[EA-navigatie]] | QEA-model drijft nav — hoe `buildNav()` werkt |
+| [[Presentielaag]] | API-first beslissingen, JWT, roadmap clients |
+| [[API-contract]] | Alle endpoints gedocumenteerd |
+| [[React Native]] | Mobiele client (Expo SDK 56) |
+
+## Samenwerking
+
+| Pagina | Inhoud |
+|---|---|
+| [[GitHub-setup]] | Git-repos, workflow, teamleden toevoegen, Obsidian Git plugin |
 
 ---
 

@@ -40,6 +40,17 @@ Dunne wrapper die een MSSQL-achtige interface biedt:
 
 Parameters via `?`-placeholders (positional).
 
+### Env-gedreven config (Mac / Azure SQL Edge — `erik-werk`)
+
+`db-mssql.js` is env-gedreven gemaakt zodat de mockup óók buiten Windows draait, **zonder Johans opstelling te breken**:
+
+- Mét `MSSQL_HOST` (+ `MSSQL_USER`/`MSSQL_PASSWORD`/`MSSQL_DB`) → `mssql`/`tedious` met SQL-auth (Eriks Mac mini, Docker Azure SQL Edge).
+- Zónder die env-vars → valt terug op Johans Windows-ODBC (`msnodesqlv8`).
+
+De poort is via `PORT` instelbaar (`server.js`). `npm install --ignore-scripts` omdat `msnodesqlv8`/`better-sqlite3` niet op Mac bouwen en daar niet nodig zijn.
+
+> **Engine-valkuil:** op **Azure SQL Edge** is `FORMAT()` (CLR-afhankelijk) uitgeschakeld → queries die het gebruiken falen/hangen. Gebruik `CONVERT(char(7),date,126)` voor `yyyy-MM`. Zie [[VS002 - 2026-06-29 - Mockup bugfix-sweep en demo-deploy]].
+
 ---
 
 ## API-laag (VS001)

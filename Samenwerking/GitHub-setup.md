@@ -21,8 +21,17 @@ Beide repos zijn **private** en staan op GitHub (geen Microsoft-tenant vereist).
 
 | Wat | Pad |
 |---|---|
-| Code | `C:\Users\johan\AppDev\apps\rioolportaal\` |
-| Docs (Obsidian) | `C:\Users\johan\OneDrive\Documenten\Obsidian Vault\AppDev\Rioolportaal\` |
+| Code (Johan) | `C:\Users\johan\AppDev\apps\rioolportaal\` |
+| Docs (Johan, Obsidian) | `C:\Users\johan\OneDrive\Documenten\Obsidian Vault\AppDev\Rioolportaal\` |
+| Code + docs (Erik) | `~/dev/svcmgt/rioolportaal` + `~/dev/svcmgt/rioolportaal-docs` (Mac mini) |
+
+---
+
+## Branches & demo-omgeving (Erik)
+
+- Erik werkt op branch **`erik-werk`** (in zowel `rioolportaal` als `rioolportaal-docs`); `main` blijft Johans referentie/vangnet. Geen forced merges — Johan reviewt/merget zelf.
+- Draaiende demo op de Mac mini: **https://engineering-leidingen-lab.proceslab.com** (achter Cloudflare Access). Zie [[VS002 - 2026-06-29 - Mockup bugfix-sweep en demo-deploy]].
+- Bug-/restpunt-tracking: GitHub-issues met label `mockup` op [JohanSvc/rioolportaal](https://github.com/JohanSvc/rioolportaal/issues?q=label%3Amockup).
 
 ---
 

@@ -4,9 +4,10 @@
 
 Aannemersportaal voor rioolwerken — opdrachtbeheer, planning en meetstaten.
 
-**Status:** mockup-fase (Express + EJS + SQLite)  
+**Status:** mockup-fase (Express + EJS + MSSQL/schema-v2 *Sectie*-model)  
 **Productie-stack:** Next.js 16, Prisma 5, SQL Server, NextAuth v5  
-**Mockup:** `C:\Users\johan\AppDev\apps\rioolportaal\mockup\` → `node server.js` → http://localhost:3003  
+**Mockup (Johan):** `C:\Users\johan\AppDev\apps\rioolportaal\mockup\` → `node server.js` → http://localhost:3003 (Windows / SQL Server Express)  
+**Mockup (Erik — draaiende demo):** Mac mini, Azure SQL Edge (Docker), persistent via LaunchAgent → http://localhost:3004 → publiek op **https://engineering-leidingen-lab.proceslab.com** (achter Cloudflare Access). Branch `erik-werk`. Zie [[VS002 - 2026-06-29 - Mockup bugfix-sweep en demo-deploy]].  
 **EA-model:** `mockup/Rioolportaal.qea` (SQLite, read-only — drijft de navigatie)
 
 ---

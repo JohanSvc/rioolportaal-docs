@@ -40,6 +40,17 @@ Dunne wrapper die een MSSQL-achtige interface biedt:
 
 Parameters via `?`-placeholders (positional).
 
+### Env-gedreven config (Mac / Azure SQL Edge — `erik-werk`)
+
+`db-mssql.js` is env-gedreven gemaakt zodat de mockup óók buiten Windows draait, **zonder Johans opstelling te breken**:
+
+- Mét `MSSQL_HOST` (+ `MSSQL_USER`/`MSSQL_PASSWORD`/`MSSQL_DB`) → `mssql`/`tedious` met SQL-auth (Eriks Mac mini, Docker Azure SQL Edge).
+- Zónder die env-vars → valt terug op Johans Windows-ODBC (`msnodesqlv8`).
+
+De poort is via `PORT` instelbaar (`server.js`). `npm install --ignore-scripts` omdat `msnodesqlv8`/`better-sqlite3` niet op Mac bouwen en daar niet nodig zijn.
+
+> **Engine-valkuil:** op **Azure SQL Edge** is `FORMAT()` (CLR-afhankelijk) uitgeschakeld → queries die het gebruiken falen/hangen. Gebruik `CONVERT(char(7),date,126)` voor `yyyy-MM`. Alle bekende voorkomens (incl. de seed-scripts) zijn omgezet — zie [[VS002 - 2026-06-29 - Mockup bugfix-sweep en demo-deploy]] en [[VS003 - 2026-06-30 - Restpunten-sweep deel 1]] (#39).
+
 ---
 
 ## API-laag (VS001)
@@ -70,6 +81,8 @@ Parameters via `?`-placeholders (positional).
 | Seed | `seed.js` | `seedIfEmpty(mdb, repo)` + `makePdf()` |
 
 Elke route-module is een factory-functie: `module.exports = function(mdb, repo) { return router; }`.
+
+**Foutafhandeling (VS003):** `server.js` laadt bovenaan `express-async-errors` — dat stuurt rejected promises uit async route-handlers op Express 4 alsnog naar de error-middleware (dekt alle `api/*`-routers zonder per-route wrapper). Onderaan staat een centrale error-middleware die een nette 500 toont i.p.v. de request te laten hangen of de default-stacktrace te lekken. Het bestaande process-vangnet (`unhandledRejection`/`uncaughtException`) blijft als backstop. Zie [[VS003 - 2026-06-30 - Restpunten-sweep deel 1]] (#40).
 
 Zie [[Presentielaag]] voor de architectuurbeslissingen achter deze opsplitsing.
 
